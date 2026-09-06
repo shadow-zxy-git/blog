@@ -6,13 +6,14 @@ server:
     max-threads: 800
     min-spare-threads: 50
     max-http-post-size: -1
-  port: 80
+  port: ${PORT:8080}
   max-http-header-size: 10000
+
 logging:
   level:
-    com.ramostear.una:  debug
-    org.springframework:  warn
-    org.spring.springboot:  debug
+    com.ramostear.una: info
+    org.springframework: warn
+
 spring:
   freemarker:
     enabled: true
@@ -21,9 +22,9 @@ spring:
     settings:
       classic_compatible: true
       template_exception_handler: rethrow
-      template_update_delay:  0
-      datetime_format:  yyyy-MM-dd HH:mm
-      number_format:  0.##
+      template_update_delay: 0
+      datetime_format: yyyy-MM-dd HH:mm
+      number_format: 0.##
     template-loader-path:
       - classpath:/templates/
     prefix:
@@ -31,9 +32,6 @@ spring:
   resources:
     static-locations:
       - classpath:/static/
-  devtools:
-    restart:
-      enabled: true
   aop:
     auto: true
     proxy-target-class: true
@@ -48,9 +46,7 @@ spring:
     multipart:
       max-file-size: 30MB
       max-request-size: 30MB
-  cache:
-    jcache:
-      config: classpath:ehcache.xml
+
 xss:
-  enabled:  false
-  urlPatterns:  /monitor/*
+  enabled: false
+  urlPatterns: /monitor/*
